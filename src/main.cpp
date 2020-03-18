@@ -37,8 +37,8 @@ class AppInput {
 
 public:
     static void display_input_options() {
-        cout << endl << "\t1 - List Followees (users that are being followed by this user)" 
-            << endl << "\t2 - List Followers (users that are following this user)" 
+        cout << endl << "\t1 - List followees (users that are being followed by this user)" 
+            << endl << "\t2 - List followers (users that are following this user)" 
             << endl << "\t3 - View messages"
             << endl << "\t4 - Send a message"
             << endl << "\t5 - Select another user"
