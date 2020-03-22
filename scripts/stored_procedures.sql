@@ -43,16 +43,16 @@ CREATE PROCEDURE GetFollowIds(OUT follower_id INT, OUT followee_id INT)
 BEGIN
 
     /* Calculate number of users in table */
-    DECLARE total_users INT;
-    SET total_users = (SELECT COUNT(id) FROM users);
+    DECLARE max_id INT;
+    SET max_id = (SELECT MAX(id) FROM users);
 
-    /* Generate random integer between 1 and total_users */
-    SET follower_id = FLOOR(RAND() * (total_users) + (1));
-    SET followee_id = FLOOR(RAND() * (total_users) + (1));
+    /* Generate random integer between 1 and max_id */
+    SET follower_id = FLOOR(RAND() * (max_id) + (1));
+    SET followee_id = FLOOR(RAND() * (max_id) + (1));
 
     /* If ids are the same, generate a new followee_id */
     WHILE follower_id = followee_id DO
-        SET followee_id = FLOOR(RAND() * (total_users) + (1));
+        SET followee_id = FLOOR(RAND() * (max_id) + (1));
     END WHILE;
 END $$
 
@@ -86,6 +86,7 @@ BEGIN
         /* Increment iterator */
         SET i = i + 1;
         
+        /* Display new following ids */
         SELECT follower_id, followee_id;
     END WHILE outer_while;
 END $$

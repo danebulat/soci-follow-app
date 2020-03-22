@@ -25,8 +25,8 @@ using std::string;
 // Application class to process input
 class AppInput {
 
-    enum UserOperations {
-        EXIT=0,
+    enum InputOptions {
+        EXIT = 0,
         FETCH_FOLLOWEES,
         FETCH_FOLLOWERS,
         VIEW_MESSAGES,
@@ -115,7 +115,7 @@ int main() {
         // Input options for user
         AppInput::display_input_options();
 
-        // Start loop for user operations
+        // Start application loop for processing user input
         bool exit = false;
         
         while (!exit) {

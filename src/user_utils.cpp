@@ -18,7 +18,7 @@ namespace soci {
     template<>
     struct type_conversion<User> {
 
-        // ORM requires that the base_type is values object
+        // ORM requires that base_type is the values object
         typedef values base_type;
 
         // Database -> User Object
@@ -84,7 +84,8 @@ bool UserUtils::verify_user(User& user) {
 
 void UserUtils::fetch_followees(session& sql, const User& user) {
     cout << endl;
-    rowset<row> rs = (sql.prepare << "SELECT u2.id, u2.email, u2.first_name, u2.last_name, u2.active "
+    rowset<row> rs = (sql.prepare << 
+        "SELECT u2.id, u2.email, u2.first_name, u2.last_name, u2.active "
         "FROM users u1 "
         "INNER JOIN followings f ON u1.id=f.follower "
         "INNER JOIN users u2 ON u2.id=f.followee "
