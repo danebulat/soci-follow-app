@@ -2,6 +2,15 @@
 CREATE DATABASE social_db;
 USE social_db;
 
+/* Create a new user and set user's grants */
+CREATE USER developer@localhost IDENTIFIED BY 'Secure123';
+GRANT ALL ON social_db.* TO developer@localhost;
+GRANT EXECUTE ON ocial_db.* TO developer@localhost;
+SET DEFAULT ROLE ALL TO developer@localhost;
+
+/* Verify the developer user's grants */
+SHOW GRANTS FOR developer@localhost;
+
 /* Users table */
 CREATE TABLE users (
     id INT AUTO_INCREMENT,
